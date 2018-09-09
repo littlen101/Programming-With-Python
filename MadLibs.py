@@ -13,7 +13,7 @@ sFinalPrompt = '\nAll done! Press Enter to see your Mad Lib Results!'
 
 
 #Below int definitions will be used only if have time to count the number of entries entered in a comma separated list
-    #by the end user and re-prompt for additional, missing entries.
+#by the end user and re-prompt for additional, missing entries.
 #intNumAdj = int(4)
 #intNumNoun = int(3)
 #intNumVerb = int(2)
@@ -31,7 +31,6 @@ def Main():
     KickoffPrompt = input(sInitialPrompt)
 
 #Obtain user's adjective list and use input to define list variable
- #   AdjPrompt: List = input(sAdjListPrompt)
     sAdjsEntered = input(sAdjListPrompt)
     StrSplit_Adj = sAdjsEntered.split(',',4)
     lstAllAdjsEntered: List = StrSplit_Adj
@@ -56,14 +55,13 @@ def Main():
     lstAllVerbsEntered = lstVerb1 + lstVerb2 + lstVerb3
 
 #Obtain user's mutiple noun entries, and form list for indexing later
-    slstNoun1 = [input(sNounPrompt1)]
-    slstNoun2 = [input(sNounPrompt2)]
-    slstNoun3 = [input(sNounPrompt3)]
-    slstNoun4 = [input(sNounPrompt4)]
+    lstNoun1 = [input(sNounPrompt1)]
+    lstNoun2 = [input(sNounPrompt2)]
+    lstNoun3 = [input(sNounPrompt3)]
+    lstNoun4 = [input(sNounPrompt4)]
 
     # Place ALL nouns entered into 1 list
-    lstAllNounsEntered = slstNoun1 + slstNoun2 + slstNoun3 + slstNoun4
-
+    lstAllNounsEntered = lstNoun1 + lstNoun2 + lstNoun3 + lstNoun4
 
 #test input structure. comment all below entries out from final output.
 #    print('\t* lstAdjsEntered = ', lstAllAdjsEntered)
