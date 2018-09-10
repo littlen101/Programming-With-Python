@@ -10,14 +10,6 @@ sNounPrompt3 = 'Enter a type of liquid: '
 sNounPrompt4 = 'Enter the name of a room in a house: '
 sFinalPrompt = '\nAll done! Press Enter to see your Mad Lib Results!'
 
-
-
-#Below int definitions will be used only if have time to count the number of entries entered in a comma separated list
-#by the end user and re-prompt for additional, missing entries.
-#intNumAdj = int(4)
-#intNumNoun = int(3)
-#intNumVerb = int(2)
-
 def Main():
 # Print introductory remarks to screen
     print('Mad Libs Project - Written by Travis Thomas'
@@ -30,31 +22,20 @@ def Main():
     #Kickoff User Prompts
     KickoffPrompt = input(sInitialPrompt)
 
-#Obtain user's adjective list and use input to define list variable
-    sAdjsEntered = input(sAdjListPrompt)
-    StrSplit_Adj = sAdjsEntered.split(',',4)
-    lstAllAdjsEntered: List = StrSplit_Adj
-    #cntlst = count.lstAdjsEntered #need to figure out this syntax
+# Obtain user's adjective list and use input to define list variable
+    lstAllAdjsEntered: list = input(sAdjListPrompt).split(',',4)
 
-#Obtain user's mutiple verb entries, and form list for indexing later
+# Obtain user's mutiple verb entries, and form list for indexing later
     lstVerb1 = [input(sVerbListPrompt1)]
 
     lstVerb2 = [input(sVerbListPrompt2)]
-    #Parse string variable into comma-separated list
-    # StrSplit_slstVerb2 = slstVerb2.split(',',2)
-    #Instantiate variable with new comma-separated list for readability
-    # lstVerb2: List = StrSplit_slstVerb2
+    # Receive user input, parse into single items leveraging the "," and store in variable as a list.
+    lstVerb3: list = input(sVerbListPrompt3).split(',',2)
 
-    slstVerb3 = input(sVerbListPrompt3)
-    # Parse string variable into comma-separated list
-    StrSplit_slstVerb3 = slstVerb3.split(',',2)
-    #Instantiate variable with new comma-separated list for readability
-    lstVerb3: List = StrSplit_slstVerb3
-
-    #Place ALL verbs entered into 1 list
+    # Place ALL verbs entered into 1 list via list concatenation
     lstAllVerbsEntered = lstVerb1 + lstVerb2 + lstVerb3
 
-#Obtain user's mutiple noun entries, and form list for indexing later
+# Obtain user's mutiple noun entries, and form list for indexing later
     lstNoun1 = [input(sNounPrompt1)]
     lstNoun2 = [input(sNounPrompt2)]
     lstNoun3 = [input(sNounPrompt3)]
@@ -63,24 +44,22 @@ def Main():
     # Place ALL nouns entered into 1 list
     lstAllNounsEntered = lstNoun1 + lstNoun2 + lstNoun3 + lstNoun4
 
-#test input structure. comment all below entries out from final output.
+# test input structure. Comment all below entries out from final output.
 #    print('\t* lstAdjsEntered = ', lstAllAdjsEntered)
 #    print('\t* lstAllVerbsEntered = ', lstAllVerbsEntered)
 #    print('\t* lstAllNounsEntered = ', lstAllNounsEntered)
 
-#Final Mad Libs Output
+# Final Mad Libs Output
     FinalPrompt = input(sFinalPrompt)
 
-#    sFinalOutPut: str = '\nWhen I was little, I was afraid of ' + lstAllNounsEntered[1] + '.'
     print('\nWhen I was little, I was afraid of {}.'.format(lstAllNounsEntered[1]),
         'I found them to be simply {}.'.format(lstAllAdjsEntered[0]),
         '\nNone of my{} classmates could understand, and they'.format(lstAllAdjsEntered[1]),
         lstAllVerbsEntered[0], 'about it constantly.\nBut what can you expect from{}'.format(lstAllAdjsEntered[1]),
-        'people?\nNowadays, I cope by {}'.format(lstAllVerbsEntered[2]), 'loudly and{} {}'.format(lstAllVerbsEntered[3],
+        'people?\n\nNowadays, I cope by {}'.format(lstAllVerbsEntered[2]), 'loudly and{} {}'.format(lstAllVerbsEntered[3],
         lstAllNounsEntered[2]), 'all around my {}.'.format(lstAllNounsEntered[3]), '\nIt’s surprisingly '
         'therapeutic! You wouldn’t think it would work since it sounds\nso{}.'.format(lstAllAdjsEntered[2]),
         'I guess it just goes to show that even a(n){} {}'.format(lstAllAdjsEntered[3], lstAllNounsEntered[0]),
         'can {},'.format(lstAllVerbsEntered[1]), 'too!'
     )
-
 Main()
