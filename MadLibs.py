@@ -51,7 +51,7 @@ def Main():
 
 # Final Mad Libs Output
     FinalPrompt = input(sFinalPrompt)
-
+# Used .format to avoid inserting extra spaces between string and previously instantiated variables.
     print('\nWhen I was little, I was afraid of {}.'.format(lstAllNounsEntered[1]),
         'I found them to be simply {}.'.format(lstAllAdjsEntered[0]),
         '\nNone of my{} classmates could understand, and they'.format(lstAllAdjsEntered[1]),
