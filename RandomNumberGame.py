@@ -14,7 +14,7 @@ def is_int(sInputVal):
         return False
 
 while wish_to_play == 'Y' or wish_to_play == 'y':
-    input('Welcome to The Random Number Guessing Game! Press ENTER to begin.\n')
+    input('\nWelcome to The Random Number Guessing Game! Press ENTER to begin.\n')
     random_num = random.randint(1, 100)  # Integer from 1 to 100
     random_num = int(random_num)
     # print (random_num)
