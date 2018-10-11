@@ -146,12 +146,13 @@ def main():
     input_num_SSN_dependents = input(sPrompt_SSN_dependents)
     num_SSN_dependents = is_nine_digits(sPrompt_SSN_dependents,input_num_SSN_dependents,int(9))
     if str(input_num_SSN_dependents) != '':
-        lst_num_SSN_dependents = ()
+        lst_num_SSN_dependents = list()
         while str(input_num_SSN_dependents) != '':
             num_SSN_dependents = is_nine_digits(sPrompt_SSN_dependents,input_num_SSN_dependents,int(9))
-            lst_num_SSN_dependents: list = (lst_num_SSN_dependents,num_SSN_dependents)
+            num_SSN_dependents: list = input_num_SSN_dependents     
+            lst_num_SSN_dependents.append(num_SSN_dependents)
             input_num_SSN_dependents = input(sPrompt_SSN_dependents)
- 
+
     #obtain income source values below this line. Place into list, filling any blank spaces in with 0.0
     input(sStmt_monetary_values)
     input_num_Invstmnt_inc = input(sPrompt_Invstmnt_inc)
@@ -220,7 +221,8 @@ def main():
     '\n'+ sPrompt_SSN_spouse + str(num_SSN_Spouse))
     for f in lst_num_SSN_dependents:
         ssn = str(f)
-        print(sPrompt_SSN_dependents + ssn + '\n')
+        print(sPrompt_SSN_dependents + ssn)
+    sys.stdout.write('\n')
     print(sPrompt_Invstmnt_inc + money_val_str_output(num_Invstmnt_inc) +
     '\n' + sPrompt_StateLocalTax_inc + money_val_str_output(num_StateLocalTax_inc) +
     '\n' + sPrompt_Bus_inc + money_val_str_output(num_Bus_inc) +
