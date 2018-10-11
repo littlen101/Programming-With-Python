@@ -1,3 +1,5 @@
+#First Class Project
+
 # Instantiate variables for use later
 sInitialPrompt = '\nPress ENTER to begin.'
 sAdjListPrompt = '\nEnter 4 adjectives, separated by commas: '
