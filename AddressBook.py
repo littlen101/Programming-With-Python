@@ -12,7 +12,7 @@ sWelcomePrompt = ('Welcome to Little Black Book! This program will allow you to 
 
 lb = '\n'
 sName = 'Name: '
-sPhone = 'Phone Number: '
+sPhone = 'Phone Number'
 sPhoneType = 'Enter "H" if this is a HOME number or W if this is a WORK number: '
 sEmail = 'Email Address'
 sEmailType = 'Enter "H" if this is a HOME email or W if this is a WORK email: '
@@ -21,6 +21,7 @@ sBirthday = 'Birthday: '
 sNickname = 'Nickname(s): '
 sOccupation = 'Occupation: '
 sCompany = 'Company: '
+sSectionBreak = '-----------------------------------------------------------'
 sAddMore = ('Your file has been updated.'
 '\nIf you wish to add more contacts, type "Y" and press ENTER.'
 '\nType "N" and press ENTER to stop and view your contact list.'
@@ -65,10 +66,28 @@ def Main():
         lb
         lb
         input_sName = reqFld(input(sName),sName)
-        input_sPhone = input(sPhone)
-        if input_sPhone != '':
-            input_sPhoneType = input(sPhoneType)
-            input_sPhone = homeVSwork(input_sPhoneType,input_sPhone,sPhoneType)         
+        input_sPhone = reqFld(input(sPhone + ': '),sPhone)
+        phoneNumLoopVar = 'x'
+        lstPhoneNumbers = list()       
+        while phoneNumLoopVar != '':
+            if input_sPhone == '':
+                input_sPhone = input('Additional ' + sPhone + ' or press ENTER: ')
+            if input_sPhone != '':
+                input_sPhoneType = input(sPhoneType) 
+                input_sPhone = homeVSwork(input_sPhoneType,input_sPhone,sPhoneType) 
+                lstPhoneNumbers.append(input_sPhone)
+            phoneNumLoopVar = input_sPhone
+            input_sPhone = ''
+        sTmp = ''
+        length_lstPhoneNumbers = int(len(lstPhoneNumbers)) 
+        cntPhone = 1      
+        for i in lstPhoneNumbers:
+            if cntPhone != length_lstPhoneNumbers:
+                sTmp = sTmp + sPhone + i + '\n'
+            else:
+                sTmp = sTmp + sPhone + i
+            cntPhone = cntPhone + 1
+        input_sPhone = sTmp
         cntEmail = 1
         canEnterAdditionalEmail = True
         input_2nd_email = ''
@@ -101,8 +120,8 @@ def Main():
         fileInput = (sName + input_sName + lb + sPhone + input_sPhone + lb +
             sEmail + input_sEmail + lb + sAddress + input_sAddress + lb +
             sBirthday + input_sBirthday + lb + sNickname + input_sNickname + lb +
-            sOccupation + input_sOccupation + lb + sCompany + input_sCompany + lb +
-            '-----------------------------------------------------------' + lb)
+            sOccupation + input_sOccupation + lb + sCompany + input_sCompany + lb + 
+            sSectionBreak + lb)
         if fileInput != '':
             cntAddition = cntAddition + 1
             storeInput(filename,fileInput,cntAddition)
